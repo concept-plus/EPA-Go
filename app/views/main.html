@@ -1,0 +1,32 @@
+<div class="main-wrapper center">
+    <image class="header-logo" src="../images/fda-go-logo-l.png"></image>
+    <a id="help-main-page" onclick="return false" class="btn help-link" ng-click="toggleHelp()"><span class='sr-only'>Click to learn more about and navigate EPAGO.</span>About</a>
+    <h1 class="lead epa-text">EPA related information for your outdoor safety.</h1>
+
+    <form>
+        <div class="row search-bar">
+          <h4 form="zipsearch">Enter a Zip Code to see the Outdoor Forecast.</h4>
+          <div class="input-group">
+            <input type="text" id="search-box" class="form-control large" placeholder="Enter your zip code here." ng-model="searchString">
+            <span class="input-group-btn">
+                <button type="submit" id="search-button" class="go-endcap" ng-click="submitSearch(searchString)">
+                  <!--img src="./images/go-button-endcap-l.png" alt="Go: click to search medical device recalls.">
+                    <span class='sr-only'>Search</span-->
+                </button>
+            </span>
+          </div>
+          <div class="alert alert-danger" role="alert" ng-show="invalid == true">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error: </span>
+            Please enter a search value.
+          </div>
+        </div>
+
+    </form>
+    
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+</div>

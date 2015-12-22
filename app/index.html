@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-app="epaApp" ng-controller="RootCtrl">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/">EPA</a>
+                </div>
+                <div class="collapse navbar-collapse" id="js-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#/">Home</a></li>
+                        <li><a ng-href="#/results">Results</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- API well -->
+    <div id="api-well" class="well collapse" aria-hidden="true">
+        <div class="container">
+            <div id="api-called"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div ng-view=""></div>
+    </div>
+    <div class="footer">
+        <div class="container center">
+            <h5>Made with <span class="glyphicon glyphicon-heart"></span> from the &nbsp;<a href="http://www.conceptplusllc.com"><img src="./images/cp-full-no-tagline-colored-200x33.jpg" style="height:20px;" alt="Click to go to the Concept Plus homepage." title="Concept Plus"/></a> team</h5>
+            <p>&nbsp;</p>
+            <h5>Powered by:</h5>
+            <div class="poweredby">
+                <a href="http://angularjs.org/"><img src="../images/angular.png" alt="AngularJS" title="AngularJS"></a>
+                <a href="http://aws.amazon.com/"><img src="../images/aws.png" atl="Amazon Web Services" title="Amazon Web Services"></a>
+                <a href="https://github.com/google/cadvisor"><img src="../images/cadvisor.png" alt="cAdvisor" title="cAdvisor"></a>
+                <a href="http://getbootstrap.com/"><img src="../images/bootstrap.png" alt="Bootstrap" title="Bootstrap"></a>
+                <a href="http://bower.io/"><img src="../images/bower.png" alt="Bower" title="Bower Package Manager"></a>
+                <a href="http://www.docker.com/"><img src="../images/docker.png" alt="Docker" title="Docker"></a>
+                <a href="http://git-scm.com//"><img src="../images/git.png" alt="Git" title="Git"></a>
+                <a href="http://github.com/"><img src="../images/github.png" alt="GitHub" title="GitHub"></a>
+                <a href="http://gruntjs.com/"><img src="../images/grunt.png" alt="Grunt JS" title="Grunt Task Runner"></a>
+                <a href="http://invisionapp.com/"><img src="../images/invision.png" alt="Invision" title="InVision"></a>
+                <a href="http://jasmine.github.io/"><img src="../images/jasmine.png" alt="JasmineJS" title="Jasmine Behavior-Driven JavaScript"></a>
+                <a href="http://jenkins-ci.org/"><img src="../images/jenkins.png" alt="Jenkins CI Server" title="Jenkins CI Server"></a>
+                <a href="http://karma-runner.github.io/0.12/index.html"><img src="../images/karma.png" alt="KarmaJS" title="KarmaJS"></a>
+                <a href="http://nightwatchjs.org/"><img src="../images/nightwatch.png" alt="Nightwatch.js" title="Nightwatch.js"></a>
+                <a href="http://nodejs.org/"><img src="../images/nodejs.png" alt="NodeJS" title="NodeJS"></a>
+                <a href="http://www.seleniumhq.org/"><img src="../images/selenium.png" alt="Selenium Browser Automation" title="Selenium Browser Automation"></a>
+                <a href="http://slack.com/"><img src="../images/slack.png" alt="Slack" title="Slack"></a>
+                <a href="http://yeoman.io/"><img src="../images/yeoman.png" alt="Yeoman" title="Yeoman"></a>
+            </div>
+        </div>
+    </div>
+    <!-- Help modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">About EPA-GO</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-include="'views/help.html'"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- API modal -->
+    <div class="modal fade" id="apiModal" tabindex="-1" role="dialog" aria-labelledby="apiModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">OpenFDA API Data:</h4>
+                </div>
+                <div class="modal-body">
+                    <pre></pre>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/results.js"></script>
+    <script src="scripts/epaApiServices.js"></script>
+    <script src="scripts/util.js"></script>
+    <script src="scripts/services.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

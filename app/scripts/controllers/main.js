@@ -25,7 +25,7 @@ angular.module('epaApp').controller('MainCtrl', ['$rootScope', '$scope', functio
             angular.element('#search-bx').focus();
         } else {
             $rootScope.invalid = false;
-            $rootScope.submitSearchSidebar(q);
+            $rootScope.submitSearch(q);
         }
     };
 

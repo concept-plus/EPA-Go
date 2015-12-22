@@ -23,7 +23,7 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/results', {
+      .when('/results/:zip', {
         templateUrl: 'views/results.html',
         controller: 'ResultsCtrl'
       })
@@ -32,15 +32,17 @@ angular
       });
   })
   .controller('RootCtrl', function($rootScope, $location){
-    $rootScope.submitSearchSidebar = function(q){alert('rootscope');/*
+    $rootScope.submitSearch = function(q){
+
+    
       if (q === undefined || q === '') {
         $rootScope.invalid = true;
       } else {
-        angular.element('.navmenu').offcanvas('hide');
+        //angular.element('.navmenu').offcanvas('hide');
         $rootScope.invalid = false;
-        $rootScope.category = 'drug';
-        $location.path('/results/' + $rootScope.category + '/' + encodeURIComponent(q));
-      }*/
+        //$rootScope.category = 'drug';
+        $location.path('/results/' + encodeURIComponent(q));
+      }
     };
     $rootScope.showLoading = function(bool){
       if (bool) {
@@ -70,6 +72,5 @@ angular
 
     $rootScope.toggleHelp = function(){
       angular.element('#helpModal').modal('show');
-      alert('togglehelp');
     };
   });

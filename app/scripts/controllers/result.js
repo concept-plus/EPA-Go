@@ -9,12 +9,9 @@
  */
 angular.module('epaApp')
     .controller('ResultsCtrl', [
-        '$rootScope',
-        function($rootScope) {
-            this.awesomeThings = [
-                'HTML5 Boilerplate',
-                'AngularJS',
-                'Karma'
-            ];
+        '$scope', '$rootScope', '$location',
+        function($scope, $rootScope, $location) {
+            $scope.path = $location.path();
+
         }
     ]);

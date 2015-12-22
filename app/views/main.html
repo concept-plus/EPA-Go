@@ -1,15 +1,15 @@
-<div class="main-wrapper center">
+<div class="main-wrapper center" >
     <image class="header-logo" src="../images/fda-go-logo-l.png"></image>
     <a id="help-main-page" onclick="return false" class="btn help-link" ng-click="toggleHelp()"><span class='sr-only'>Click to learn more about and navigate EPAGO.</span>About</a>
     <h1 class="lead epa-text">EPA related information for your outdoor safety.</h1>
 
-    <form>
+    <form >
         <div class="row search-bar">
           <h4 form="zipsearch">Enter a Zip Code to see the Outdoor Forecast.</h4>
           <div class="input-group">
-            <input type="text" id="search-box" class="form-control large" placeholder="Enter your zip code here." ng-model="searchString">
+            <input type="text" id="search-box" class="form-control large" placeholder="Enter your zip code here." ng-model="zipSearchString">
             <span class="input-group-btn">
-              <button type="submit" id="search-button" class="btn btn-success glyphicon glyphicon-search" ng-click="submitSearch(searchString)">Success</button>
+              <button type="submit" id="search-button" disabled class="btn btn-success glyphicon glyphicon-search" ng-click="submitSearch(zipSearchString)">Success</button>
              
                   <!--img img="glyphicon glyphicon-search" alt="Go: click to search medical device recalls."-->
                     <span class='sr-only'>Search</span>

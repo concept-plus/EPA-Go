@@ -14,4 +14,8 @@ angular.module('epaApp')
             $scope.path = $location.path();
 
         }
+
+
+
+
     ]);

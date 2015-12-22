@@ -29,6 +29,17 @@ angular.module('epaApp').controller('MainCtrl', ['$rootScope', '$scope', functio
         }
     };
 
+
+    $scope.$watch('zipSearchString', function(newValue, oldValue) {
+        if (newValue !== oldValue && newValue !== null) {
+            if (newValue.length === 5) {
+                angular.element('#search-button').attr('disabled', false);
+            } else {
+                angular.element('#search-button').attr('disabled', true);
+            }
+        }
+    });
+
     setTimeout(function() {
         angular.element('#search-box').focus();
     }, 0);

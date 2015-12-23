@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'chart.js',
+    'nvd3',
     'services'
   ])
   .config(function ($routeProvider) {

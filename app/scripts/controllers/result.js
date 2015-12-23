@@ -20,6 +20,8 @@ angular.module('epaApp')
     $scope.uvForecastOrder = [];
     $scope.uvForecastValue = [];
 
+    $scope.uvDataSet = [];
+
 
     var today = $filter('date')(new Date, 'fullDate');
     console.log(today);
@@ -43,8 +45,42 @@ angular.module('epaApp')
                 $scope.uvForecastOrder[i] = currentUVIndex.ORDER;
                 //$scope.uvForecastValue[i] = [300, 500, 100, 40, 120];//currentUVIndex.UV_VALUE;
                 //console.log(currentUVIndex.DATE_TIME);
-                console.log($filter('date')(currentUVIndex.DATE_TIME, 'H'));
+                console.log($filter('date')(currentUVIndex.DATE_TIME, 'fullDate'));
+                //console.log($filter('date')(today, 'H'));
+                //var time = $filter('date')(new Date, 'H');
+                //console.log(new Date(currentUVIndex.DATE_TIME));
+
+
+                var color;
+                switch (true) {
+                    case (currentUVIndex.UV_VALUE<=2):
+                        color = "#4eb400";
+                        break;
+                    case (currentUVIndex.UV_VALUE<=5):
+                        color = "#f7e400";
+                        break;
+                    case (currentUVIndex.UV_VALUE<=7):
+                        color = "#f85900";
+                        break;
+                    case (currentUVIndex.UV_VALUE<=10):
+                        color = "#d8001d";
+                        break;
+                    case (currentUVIndex.UV_VALUE>=11):
+                        color = "#998cff";
+                        break;
+                }
+
+                var uvdata = {
+                    "label": currentUVIndex.DATE_TIME,
+                    "value": currentUVIndex.UV_VALUE,
+                    "color": color
+                };
+
+                $scope.uvDataSet.push(uvdata);
+
             }
+
+
             var testnum = 350;
 
             // used to update the UI
@@ -90,6 +126,8 @@ angular.module('epaApp')
                 //$scope.currentAQICategoryName = currentIndex.Category.Name;
                 //$scope.currentAQICategoryNum = currentIndex.Category.Number;
                 //              console.log(currentIndex.AQI);
+
+
             }
             //        console.log('currentaqi', $scope.currentAQI2);
             //console.log($scope.currentAQISeries);
@@ -135,7 +173,7 @@ angular.module('epaApp')
             },
             showValues: true,
             valueFormat: function(d) {
-                return d3.format(',.4f')(d);
+                return d3.format(',.0f')(d);
             },
             transitionDuration: 500,
             xAxis: {
@@ -148,34 +186,10 @@ angular.module('epaApp')
         }
     };
 
-$scope.d3data = [{
-    key: "Cumulative Return",
-    values: [{
-        "label": "A",
-        "value": -29.765957771107
-    }, {
-        "label": "B",
-        "value": 0
-    }, {
-        "label": "C",
-        "value": 32.807804682612
-    }, {
-        "label": "D",
-        "value": 196.45946739256
-    }, {
-        "label": "E",
-        "value": 0.19434030906893
-    }, {
-        "label": "F",
-        "value": -98.079782601442
-    }, {
-        "label": "G",
-        "value": -13.925743130903
-    }, {
-        "label": "H",
-        "value": -5.1387322875705
-    }]
-}];
+    $scope.d3data = [{
+        key: "Cumulative Return",
+        values: $scope.uvDataSet
+    }];
 
 
 

@@ -1,24 +1,17 @@
 <div class="col-md-12 content full-height" id="results">
     <div class="col-md-12 current-view">
         <div id="current-uv" class="col-md-6">
-        	<span>Current UVI</span>
         </div>
         <div id="current-aqi" class="col-md-6">
-        	<span>Current AQI</span>
-            <canvas id="polar-area" class="chart chart-polar-area" chart-legend="true" chart-data="currentAQI2" chart-labels="currentAQISeries">
+            <canvas id="current-aqi-chart" class="chart chart-polar-area" chart-legend="true" chart-data="currentAQI2" chart-labels="currentAQISeries">
             </canvas>
         </div>
     </div>
+    <div class="col-md-12 content detail-view" id="full-aqi">
+        <nvd3 id="uv-chart" options="options" data="d3data"></nvd3>
+    </div>
     <div class="col-md-12 content detail-view" id="forcast-uv">
-    	<span>UV Index Forcast</span>
-        
-        <canvas id="bar" class="chart chart-bar" chart-data="uvForecastValue" chart-labels="uvForecastDateTime" chart-series="UVIndex">
+        <canvas id="aqi-chart" class="chart chart-bar" chart-data="uvForecastValue" chart-labels="uvForecastDateTime" chart-series="UVIndex">
         </canvas>
     </div>
-    <div class="col-md-12 content detail-view" id="full-aqi">
-    	<span>Full AQI</span>
-        <nvd3 options="options" data="d3data"></nvd3>
-    </div>
-
-    
 </div>

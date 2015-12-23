@@ -5,8 +5,15 @@
   padding: 0.2em 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   padding: 0;
+  background-image: url('../images/landscape-mountains-nature-man.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -19,7 +26,6 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
 }
 /* Make the masthead heading the same height as the navigation */
@@ -29,12 +35,32 @@ body {
   line-height: 40px;
   padding-bottom: 19px;
 }
+.header .navbar {
+  background-color: rgba(240,240,240,0.5);
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 0;
+}
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  /*padding-top: 19px;*/
   color: #777;
   border-top: 1px solid #e5e5e5;
+  background-color: rgba(200,200,200,0.4);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.footer h5 {
+  color: white;
+}
+
+.footer .poweredby {
+  margin-bottom: 20px;
 }
 
 .container-narrow > hr {
@@ -60,15 +86,12 @@ body {
 }
 
 #zipSearch {
-  /* This image will be displayed fullscreen */
-  background-image: url('../images/landscape-mountains-nature-man.jpg');
-  
   /* Ensure the html element always takes up the full height of the browser window */
-  min-height:100%;
+  /*min-height:100%;*/
 
   /* The Magic */
-  background-size:cover;
-  width: 1100px!important;
+  /*background-size:cover;*/
+  /*width: 1100px!important;*/
 }
 
 /* Responsive: Portrait tablets and up */

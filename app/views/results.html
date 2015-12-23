@@ -1,2 +1,22 @@
-<p>This is the results view.</p>
-{{path2}}
+<div class="col-md-12 content full-height" id="results">
+    <div class="col-md-12 current-view">
+        <div id="current-uv" class="col-md-6">
+            this is current uv index
+        </div>
+        <div id="current-aqi" class="col-md-6">
+            <canvas id="polar-area" class="chart chart-polar-area" chart-legend="true" chart-data="currentAQI2" chart-labels="currentAQISeries">
+        </canvas>
+
+        </div>
+    </div>
+    <div class="col-md-12 content detail-view" id="forcast-uv">
+        this is forcast of uv
+        <canvas id="bar" class="chart chart-bar" chart-legend="true" chart-data="uvForecastValue" chart-labels="uvForecastDateTime" chart-series="uvForecastOrder">
+            </canvas>
+    </div>
+    <div class="col-md-12 content detail-view" id="full-aqi">
+        this is full aqi
+        <canvas id="bar" class="chart chart-bar" chart-legend="true" chart-data="currentAQI" chart-labels="currentAQILabel" chart-series="currentAQISeries">
+         </canvas>
+    </div>
+</div>

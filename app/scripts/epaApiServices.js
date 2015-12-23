@@ -6,7 +6,7 @@ var services = angular.module('services', ['utilities']);
 services.factory('apiQueryService', ['$http', '$q', function($http, $q) {
     'use strict';
 
-    var BASE_URL = 'http://localhost:8080/relay';
+    var BASE_URL = 'http://52.90.111.204:8181/relay';
 
     var factory = {
         queryAQI: function(options) {

@@ -66,7 +66,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 9001,
         // Change this to '0.0.0.0' to access the server from outside.
         //hostname: 'localhost',
         hostname: '0.0.0.0',
@@ -238,8 +238,8 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
-          '<%= yeoman.dist %>/images',
-          '<%= yeoman.dist %>/styles',
+          '<%= yeoman.dist %>/images/',
+          '<%= yeoman.dist %>/styles/',
           '<%= yeoman.dist %>/fonts'
         ]
       }
@@ -348,7 +348,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '**/*.html',
-            'images/{,*/}*.{webp}',
+            'images/**/*',//{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*',
             'fonts/{,*/}*.*',
           ]

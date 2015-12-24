@@ -7,10 +7,11 @@
             </canvas>
         </div>
     </div>
-    <div class="col-md-12 content detail-view" id="full-aqi">
-        <nvd3 id="uv-chart" options="options" data="d3data"></nvd3>
+    <div class="col-md-12 content detail-view" id="forecast-uv">
+        <img  id="uvloading" src="./images/ajax-loader.gif" alt="Your results are loading." />
+        <nvd3 id="uv-chart" options="uviBCOptions" data="uviBCData"></nvd3>
     </div>
-    <div class="col-md-12 content detail-view" id="forcast-uv">
+    <div class="col-md-12 content detail-view" id="full-aqi">
         <canvas id="aqi-chart" class="chart chart-bar" chart-data="uvForecastValue" chart-labels="uvForecastDateTime" chart-series="UVIndex">
         </canvas>
     </div>

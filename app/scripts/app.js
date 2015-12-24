@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'chart.js',
     'nvd3',
+    'angularMoment',
     'services'
   ])
   .config(function ($routeProvider) {
@@ -47,11 +48,11 @@ angular
         $location.path('/results/' + encodeURIComponent(q));
       }
     };
-    $rootScope.showLoading = function(bool){
+    $rootScope.showLoading = function(id, bool){
       if (bool) {
-        angular.element('#loading').show();
+        angular.element(id).show();
       } else {
-        angular.element('#loading').hide();
+        angular.element(id).hide();
       }
     };
 

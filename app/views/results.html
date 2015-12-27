@@ -1,8 +1,9 @@
 <div class="col-md-12 content full-height" id="results">
     <div class="col-md-12 current-view">
-        <div id="current-uv" class="col-md-6" ng-style="uvColor">
+        <div id="current-uv" class="col-md-6">
             <h2> Current UV Index </h2>
-            <h3>{{currentUVI}} - {{exposureCategory}}</h3>
+            <h2 ng-style="uvColor">{{currentUVI}} - {{exposureCategory}}</h2>
+            <img src="../images/uviscaleh_lg.gif" alt="UV Index Scale" title="UV Index Scale" style="width:100%;"></img></br>
             What does this mean?
             <ul ng-repeat="item in exposureContent">
                 &bull; {{item}}

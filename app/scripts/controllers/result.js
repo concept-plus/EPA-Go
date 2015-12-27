@@ -148,7 +148,9 @@ angular.module('epaApp')
                     $scope.currentUVI = currentUVIndex.UV_VALUE;
 
                     $scope.uvColor = {
-                        'background-color': color
+                        'color': color,
+                        'text-align': 'center'
+
                     }
                 }
 

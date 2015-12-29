@@ -135,6 +135,13 @@ h1.lead {
   border-color: #4cae4c;
   opacity: 0.65;
 }
+#search-box-container input[type=number]::-webkit-inner-spin-button,
+#search-box-container input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 #search-box-container button{
   font-size: 55px;
   height: 94px;
@@ -152,6 +159,15 @@ h1.lead {
   margin-top: 10px;
 }
 
+#api-well {
+  margin-bottom: 0;
+  padding: 15px;
+  border-radius: 0;
+}
+
+#api-well p {
+  margin: 5px 0;
+}
 
 
 /* Responsive: Portrait tablets and up */

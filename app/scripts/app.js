@@ -36,9 +36,10 @@ angular
       });
   })
   .controller('RootCtrl', function($rootScope, $location){
+    angular.element('#api-button a').click(function(e) {
+      e.preventDefault();
+    });
     $rootScope.submitSearch = function(q){
-
-    
       if (q === undefined || q === '') {
         $rootScope.invalid = true;
       } else {

@@ -186,7 +186,7 @@ angular.module('epaApp')
                 axisLabelDistance: 50,
 
             },
-            "noData": "You're data is loading",
+            "noData": "Your data is loading...",
             "title": {
                 "enable": true,
                 "text": "UV Index",

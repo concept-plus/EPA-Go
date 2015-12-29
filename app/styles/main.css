@@ -58,6 +58,9 @@ h1.lead {
 .navbar-collapse {
   padding-left: 0px;
 }
+.navbar-nav li:hover > a {
+  color: black !important;
+}
 
 /* Custom page footer */
 .footer {

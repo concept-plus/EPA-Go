@@ -1,4 +1,4 @@
-var services = angular.module('services', ['utilities']);
+var services = angular.module('services', []);
 
 /* @param options {object}
  *   options.zipcode (required) - 5-digit zipcode

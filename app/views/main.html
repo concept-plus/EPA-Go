@@ -8,7 +8,7 @@
         <a id="help-main-page" onclick="return false" class="btn help-link" ng-click="toggleHelp()"><span class='sr-only'>Click to learn more about and navigate EPAGO.</span>About</a>
           <h4 form="zipsearch">Enter a zip code to see today's Air Quality Index (AQI) and UV index.</h4>
           <div class="input-group" id="search-box-container">
-            <input type="text" id="search-box" class="form-control large" placeholder="" ng-model="zipSearchString">
+            <input type="number" id="search-box" class="form-control large" placeholder="" ng-model="zipSearchString">
             <span class="input-group-btn">
               <button type="submit" id="search-button" disabled class="btn btn-success" ng-click="submitSearch(zipSearchString)">Go</button>
              

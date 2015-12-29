@@ -32,7 +32,7 @@ angular.module('epaApp').controller('MainCtrl', ['$rootScope', '$scope', functio
 
     $scope.$watch('zipSearchString', function(newValue, oldValue) {
         if (newValue !== oldValue && newValue !== null) {
-            if (newValue.length === 5) {
+            if (newValue >= 10000 && newValue < 100000) { // ensure 5-digit number
                 angular.element('#search-button').attr('disabled', false);
             } else {
                 angular.element('#search-button').attr('disabled', true);

@@ -11,7 +11,7 @@ html, body {
 
 body {
   padding: 0;
-  background-image: url('../images/pexels-photo-large.jpeg');
+  background-color: #171717;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -24,9 +24,23 @@ body {
   padding-right: 15px;
 }
 
+h1.lead {
+  font-size: 28px;
+  color: #ddd;
+}
+
 /* Custom page header */
-.header {
-  margin-bottom: 10px;
+#help-main-page{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: #fff;
+}
+.header-logo{
+  margin-top: 40px;
+}
+.header, .navbar-default {
+  margin-bottom: 0px !important;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -41,18 +55,21 @@ body {
   border-bottom: 1px solid #e5e5e5;
   border-radius: 0;
 }
+.navbar-collapse {
+  padding-left: 0px;
+}
 
 /* Custom page footer */
 .footer {
   /*padding-top: 19px;*/
   color: #777;
   border-top: 1px solid #e5e5e5;
-  background-color: rgba(200,200,200,0.4);
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
+  background-color: #777;
 }
 
 .footer h5 {
@@ -61,6 +78,10 @@ body {
 
 .footer .poweredby {
   margin-bottom: 20px;
+}
+.footer .poweredby img {
+  width: 35px;
+  height: 35px;
 }
 
 .container-narrow > hr {
@@ -92,7 +113,54 @@ body {
   /* The Magic */
   /*background-size:cover;*/
   /*width: 1100px!important;*/
+
+  text-align: center;
 }
+.form-control:focus {
+  border: #f5f5f5;
+}
+
+.form-control {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.search-bar {
+  margin-top: 80px;
+  color: #437F43;
+}
+.search-bar h4 {
+  margin-bottom: 30px;
+}
+#search-box-container {
+  width: 315px;
+  margin: auto;
+}
+#search-box-container input{
+  font-size: 65px;
+  height: 94px;
+  color: #ccc;
+  border-radius: 15px 0 0 15px;
+  border-color: #4cae4c;
+  opacity: 0.65;
+}
+#search-box-container button{
+  font-size: 55px;
+  height: 94px;
+  border-radius: 0 15px 15px 0;
+}
+#full-aqi {
+  margin-bottom: 100px;
+}
+
+#results .current-view {
+  height: auto;
+}
+
+#results .detail-view {
+  margin-top: 10px;
+}
+
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

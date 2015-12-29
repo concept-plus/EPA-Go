@@ -87,9 +87,6 @@ angular.module('epaApp')
                 var currentUVIndex = results[i],
                     color, uvdata;
 
-
-
-
                 switch (true) {
                     case (currentUVIndex.UV_VALUE <= 2):
                         color = "#4eb400";

@@ -17,6 +17,13 @@ angular.module('utilities', []).factory('queryUtil', ['$filter', function($filte
             then.setFullYear(then.getFullYear() - 1);
             return $filter('date')(then, 'yyyyMMdd');
         },
+        getGeoLocation: function() {
+            navigator.geolocation.getCurrentPosition(function(location){
+                console.log(location.coords.latitude);
+                console.log(location.coords.longitude);
+                console.log(location.coords.accuracy);
+            })
+        },
         removeDuplicateDrugs: function(drugs) {
             var uniqueDrugs = [];
             var drugHash = {};

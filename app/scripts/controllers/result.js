@@ -46,12 +46,9 @@ angular.module('epaApp')
     $scope.zip = zipcode;
     console.log('zipcode = ' + zipcode);
 
-    /* 
-    Current VU
-    */
 
     /*
-    Current AQI
+    AQI
     */
     apiQueryService.queryAQICurrent({
         zipcode: zipcode
@@ -74,7 +71,7 @@ angular.module('epaApp')
         }
     );
     /* 
-    Forecast VU
+    UV
     */
     apiQueryService.queryUV({
         zipcode: zipcode
@@ -82,6 +79,10 @@ angular.module('epaApp')
         function(results) {
             $rootScope.showLoading('#uvloading', true);
             console.log(results);
+            if (results.length === 0){
+                alert('Please double check the Zip code enetered as no data was returned.');
+
+            }
 
             for (var i = 0; i < results.length; i++) {
                 var currentUVIndex = results[i],
@@ -164,7 +165,7 @@ angular.module('epaApp')
     $scope.uviBCOptions = {
         chart: {
             type: 'discreteBarChart',
-            height: 450,
+            height: 300,
             margin: {
                 top: 20,
                 right: 20,
@@ -215,145 +216,6 @@ angular.module('epaApp')
     $scope.uviBCData = [{
         values: $scope.uvDataSet
     }];
-
-
-    //The data is not working for this report - some days have multiple readings for the same parameter.
-    //I cannont think of a solid way to display this data
-
-    /*
-    Full Detail AQI
-    */
-    /*
-        apiQueryService.queryAQIRange({
-            zipcode: zipcode
-        }).then(
-
-            function(results) {
-                console.log(results);
-                for (var i = 0; i < results.length; i++) {
-                    var currentIndex = results[i].body,
-                        setLength = currentIndex.length;
-
-                    for (var j = 0; j < setLength; j++) {
-
-                        var currentAQIObj = {
-                            "key": '',
-                            "color": '',
-                            "value": '',
-                            "xlabel": ''
-                        };
-                        var aqiLabel = '';
-
-
-
-                        //build out array of dates observed only on first loop through data
-                        if (j === 0) {
-                            if (i >= 0 && i <= 2) {
-                                $scope.aqiDates.push(currentIndex[j].DateObserved);
-                                aqiLabel = currentIndex[j].DateObserved;
-                            } else if (i === 3) { //the current date
-                                console.log(moment(currentIndex[j].HourObserved, 'HH').format('h A'));
-                                //var hour = moment(currentIndex[j].HourObserved);
-                                //console.log(day, hour);
-                                var dt_label = currentIndex[j].DateObserved + '@ ' +(moment(currentIndex[j].HourObserved, 'HH').format('h A'));
-                                //var dt_label = moment(date_time_observed, 'YYYY-DD-MM HH').format('YYYY-DD-MM h A');
-                                $scope.aqiDates.push(dt_label);
-                                aqiLabel = dt_label;
-                            } else if (i === 4) { //the last in the 5 day output
-                                $scope.aqiDates.push(currentIndex[j].DateForecast);
-                                aqiLabel = currentIndex[j].DateForecast
-                            }
-                        }
-
-                        if (currentIndex[j].ParameterName === "OZONE" || currentIndex[j].ParameterName === "03"){
-                            currentAQIObj.key = "Ozone";
-                            currentAQIObj.value = currentIndex[j].AQI;
-                            currentAQIObj.xlabel = aqiLabel;
-                            $scope.aqiFullData.push(currentAQIObj);
-
-                        } else if (currentIndex[j].ParameterName === "PM2.5") {
-                            currentAQIObj.key = "PM 2.5";
-                            currentAQIObj.value = currentIndex[j].AQI;
-                            currentAQIObj.xlabel = aqiLabel;
-                            $scope.aqiFullData.push(currentAQIObj);
-                        } else if (currentIndex[j].ParameterName === "PM10") {
-                            currentAQIObj.key = "PM 10";
-                            currentAQIObj.value = currentIndex[j].AQI;
-                            currentAQIObj.xlabel = aqiLabel;
-                            $scope.aqiFullData.push(currentAQIObj);
-                        }
-
-
-
-
-                        //loop through param name array to build out the value arrays dynamically 
-                        for (var k = 0; k < $scope.aqiParams.length; k++) {
-
-                            if ($scope.aqiParams[k] === currentIndex[j].ParameterName) {
-                                console.log($scope.aqiParams[k], currentIndex[j].AQI);
-
-                            }
-
-
-                        }
-
-
-
-                    }
-
-
-
-    console.log($scope.aqiFullData);
-
-
-                }
-
-
-
-
-
-            },
-            function(error) {
-                console.error(JSON.stringify(error));
-            }
-        );
-
-
-
-       
-
-    $scope.options = {
-      "chart": {
-        "type": "multiBarChart",
-        "height": 450,
-        "margin": {
-          "top": 20,
-          "right": 20,
-          "bottom": 45,
-          "left": 45
-        },
-        "clipEdge": true,
-        "duration": 500,
-        "stacked": true,
-        "xAxis": {
-          "axisLabel": "Time (ms)",
-          "showMaxMin": false
-        },
-        "yAxis": {
-          "axisLabel": "Y Axis",
-          "axisLabelDistance": -20
-        }
-      }
-    };
-
-
-
-
-    */
-
-
-
-
 
 
 

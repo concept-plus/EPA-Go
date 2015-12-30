@@ -40,7 +40,7 @@ angular.module('epaApp').controller('MainCtrl', ['$rootScope', '$scope', functio
             }
         }
         if (newValue !== oldValue && newValue !== null) {
-            if (newValue >= 10000 && newValue < 100000) { // ensure 5-digit number
+            if (newValue.length === 5) { // ensure 5-digit number
                 angular.element('#search-button').attr('disabled', false);
             } else {
                 angular.element('#search-button').attr('disabled', true);

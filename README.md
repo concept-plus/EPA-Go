@@ -80,7 +80,7 @@ Our Continuous Integration implementation involved:
 
 For the scope of this effort, we have enabled multiple monitoring tools to monitor security, vulnerability, performance and health. Based on findings from periodic scans, appropriate action was taken.
 
-* **SSL Scans - [Qualys](https://www.qualys.com/free-tools-trials/security-at-your-fingertips/)
+* **SSL Scans** - [Qualys](https://www.qualys.com/free-tools-trials/security-at-your-fingertips/)
 * **Open Web Application Security Project (OWASP)** - [Qualys](https://www.qualys.com/free-tools-trials/security-at-your-fingertips/)
 * **Vulnerability** - [Qualys](https://www.qualys.com/free-tools-trials/security-at-your-fingertips/)
 * **Container Monitoring** - [cAdvisor](http://ec2-52-90-111-204.compute-1.amazonaws.com:8080/containers/)

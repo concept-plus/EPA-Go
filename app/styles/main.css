@@ -68,6 +68,10 @@ h1.lead {
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #eee;
 }
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+  margin-left: 0;
+  margin-right: 0;
+}
 
 /* Custom page footer */
 .footer {

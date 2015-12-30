@@ -41,7 +41,7 @@ _See the [Docker hub registry - Data Services](https://registry.hub.docker.com/u
 
 # Technologies
 
-The prototype consumes publicly available, EPA related APIs and works on multiple devices while satisfying all of the criteria's for this challenge. This was achieved with using many modern and open source technologies.
+The prototype consumes publicly available, EPA related APIs and works on multiple devices while satisfying all of the criteria for this challenge. This was achieved with using many modern and open source technologies.
 
 
 ## Modern, Open Source Technologies

@@ -20,7 +20,6 @@ angular.module('epaApp')
     $scope.uvForecastOrder = [];
     $scope.uvForecastValue = [];
 
-
     $scope.uvDataSet = [];
     $scope.uvDataReady = false;
 
@@ -30,14 +29,11 @@ angular.module('epaApp')
     $scope.aqiParams = [];
     $scope.aqiDates = [];
     $scope.ozoneValues = [];
-    $scope.pm25Values = []
+    $scope.pm25Values = [];
     $scope.pm10Values = [];
 
     $scope.exposureCategory = "";
     $scope.exposureContent = [];
-
-
-    var today = $filter('date')(new Date, 'fullDate');
 
 
     var path = $location.path();
@@ -149,7 +145,7 @@ angular.module('epaApp')
                         'color': color,
                         'text-align': 'center'
 
-                    }
+                    };
                 }
 
             }
@@ -182,7 +178,7 @@ angular.module('epaApp')
             transitionDuration: 500,
             xAxis: {
                 rotateLabels: 90,
-                axisLabel: $filter('date')(new Date, 'fullDate'),
+                axisLabel: $filter('date')(new Date(), 'fullDate'),
                 orient: "bottom",
                 height: 100
             },
@@ -191,7 +187,7 @@ angular.module('epaApp')
                 axisLabelDistance: 50,
 
             },
-            "noData": "You're data is loading",
+            "noData": "Your data is loading...",
             "title": {
                 "enable": true,
                 "text": "UV Index",

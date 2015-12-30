@@ -2,7 +2,7 @@
 
 # What is EPA-GO?
 
-EPA-GO is Concept Plus' working prototype submission in response to the EPA Environmental Digital Services (EPA-EDS) - Request for Information. Solicitation Number: SOL-DC-16-00010
+EPA-GO is Concept Plus' working prototype submission in response to the EPA Environmental Digital Services (EPA-EDS) - Request for Information. [Solicitation Number: SOL-DC-16-00010](https://www.fbo.gov/index?s=opportunity&mode=form&id=318612f638d28fae5675eef7bcc3dfc3&tab=core&_cview=0)
 
 Project Links  | URLs 
  ------------- | ------------- 
@@ -35,14 +35,14 @@ _See the [EPA-GO Local Deployment Guide](./LOCAL_DEPLOYMENT.md)_
 
 **Docker**  
   
-_See the [Docker hub registry](https://registry.hub.docker.com/u/conceptplus/epa-eds/)_
+_See the [Docker hub registry - Front End](https://registry.hub.docker.com/u/conceptplus/epa-eds/)_
+_See the [Docker hub registry - Data Services](https://registry.hub.docker.com/u/conceptplus/epa-eds/)_
 
 
 # Technologies
 
-The prototype consumes the [OpenEPA APIs](http://open.EPA.gov) and works on multiple devices while satisfying all of the criteria's for this challenge. This was achieved with using many modern and open source technologies.
+The prototype consumes publicly available, EPA related APIs and works on multiple devices while satisfying all of the criteria's for this challenge. This was achieved with using many modern and open source technologies.
 
-![Architecture](./evidence/architecture.png)
 
 ## Modern, Open Source Technologies
 

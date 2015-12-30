@@ -35,8 +35,8 @@ _See the [EPA-GO Local Deployment Guide](./LOCAL_DEPLOYMENT.md)_
 
 **Docker**  
   
-_See the [Docker hub registry - Front End](https://registry.hub.docker.com/u/conceptplus/epa-eds/)_
-_See the [Docker hub registry - Data Services](https://registry.hub.docker.com/u/conceptplus/epa-eds/)_
+_See the [Docker hub registry - Front End](https://registry.hub.docker.com/u/conceptplus/epa-eds/)_<br />
+_See the [Docker hub registry - Data Services](https://registry.hub.docker.com/u/conceptplus/epa-middleware/)_
 
 
 # Technologies

@@ -126,6 +126,10 @@ h1.lead {
 .search-bar h4 {
   margin-bottom: 30px;
 }
+.search-bar .alert {
+  background-color: inherit;
+  border: none;
+}
 #search-box-container {
   width: 315px;
   margin: auto;

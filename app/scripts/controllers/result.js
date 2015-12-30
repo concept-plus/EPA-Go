@@ -11,7 +11,7 @@
 
 angular.module('epaApp')
 
-.controller('ResultsCtrl', ['$scope', '$rootScope', '$location', '$filter', 'apiQueryService', '$interval', 'moment', function($scope, $rootScope, $location, $filter, apiQueryService, $interval, moment) {
+.controller('ResultsCtrl', ['$scope', '$rootScope', '$location', '$filter', 'apiQueryService', '$interval', '$q', 'moment', function($scope, $rootScope, $location, $filter, apiQueryService, $interval, $q, moment) {
     $scope.path = $location.path();
     $scope.currentAQI = [];
     $scope.currentAQI2 = [];
@@ -42,121 +42,138 @@ angular.module('epaApp')
     $scope.zip = zipcode;
     console.log('zipcode = ' + zipcode);
 
+    var aqiCurrentQuery = apiQueryService.queryAQICurrent({
+        zipcode: zipcode
+    });
+    var uvQuery = apiQueryService.queryUV({
+        zipcode: zipcode
+    });
 
     /*
     AQI
     */
-    apiQueryService.queryAQICurrent({
-        zipcode: zipcode
-    }).then(
-
+    $scope.foundAqiData = true;
+    aqiCurrentQuery.then(
 
         function(results) {
 
-
-            for (var i = 0; i < results.length; i++) {
-                var currentIndex = results[i];
-                $scope.currentAQI2[i] = currentIndex.AQI;
-                $scope.currentAQISeries[i] = currentIndex.ParameterName;
-
+            if (results.length === 0) {
+                $scope.foundAqiData = false;
+            } else {
+                $scope.foundAqiData = true;
+                for (var i = 0; i < results.length; i++) {
+                    var currentIndex = results[i];
+                    $scope.currentAQI2[i] = currentIndex.AQI;
+                    $scope.currentAQISeries[i] = currentIndex.ParameterName;
+                }
             }
-
         },
         function(error) {
             console.error(JSON.stringify(error));
         }
     );
-    /* 
+
+    /*
     UV
     */
-    apiQueryService.queryUV({
-        zipcode: zipcode
-    }).then(
+    uvQuery.then(
         function(results) {
             $rootScope.showLoading('#uvloading', true);
             console.log(results);
-            if (results.length === 0){
-                alert('Please double check the Zip code enetered as no data was returned.');
+            if (results.length === 0) {
+                $scope.uviBCOptions.chart.noData = 'No Data';
+            } else {
+                for (var i = 0; i < results.length; i++) {
+                    var currentUVIndex = results[i],
+                        color, uvdata;
 
-            }
+                    switch (true) {
+                        case (currentUVIndex.UV_VALUE <= 2):
+                            color = "#4eb400";
+                            $scope.exposureCategory = "Low";
+                            $scope.exposureContent = ['Wear sunglasses on bright days.',
+                                'If you burn easily, cover up and use broad spectrum SPF 30+ sunscreen.',
+                                'Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.'
+                            ];
+                            break;
+                        case (currentUVIndex.UV_VALUE <= 5):
+                            color = "#f7e400";
+                            $scope.exposureCategory = "Moderate";
+                            $scope.exposureContent = [
+                                "Stay in shade near midday when the sun is strongest.",
+                                "If outdoors, wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.",
+                                "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
+                                "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
+                            ];
+                            break;
+                        case (currentUVIndex.UV_VALUE <= 7):
+                            color = "#f85900";
+                            $scope.exposureCategory = "High";
+                            $scope.exposureContent = ["Reduce time in the sun between 10 a.m. and 4 p.m.",
+                                "If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.", "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
+                                "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
+                            ];
+                            break;
+                        case (currentUVIndex.UV_VALUE <= 10):
+                            color = "#d8001d";
+                            $scope.exposureCategory = "Very High";
+                            $scope.exposureContent = ["Minimize sun exposure between 10 a.m. and 4 p.m.", "If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.",
+                                "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
+                                "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
+                            ];
+                            break;
+                        case (currentUVIndex.UV_VALUE >= 11):
+                            color = "#998cff";
+                            $scope.exposureCategory = "Extreme";
+                            $scope.exposureContent = ["Minimize sun exposure between 10 a.m. and 4 p.m.", "If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.",
+                                "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
+                                "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
+                            ];
+                            break;
+                    }
 
-            for (var i = 0; i < results.length; i++) {
-                var currentUVIndex = results[i],
-                    color, uvdata;
-
-                switch (true) {
-                    case (currentUVIndex.UV_VALUE <= 2):
-                        color = "#4eb400";
-                        $scope.exposureCategory = "Low";
-                        $scope.exposureContent = ['Wear sunglasses on bright days.',
-                            'If you burn easily, cover up and use broad spectrum SPF 30+ sunscreen.',
-                            'Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure.'
-                        ];
-                        break;
-                    case (currentUVIndex.UV_VALUE <= 5):
-                        color = "#f7e400";
-                        $scope.exposureCategory = "Moderate";
-                        $scope.exposureContent = [
-                            "Stay in shade near midday when the sun is strongest.",
-                            "If outdoors, wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.",
-                            "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
-                            "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
-                        ];
-                        break;
-                    case (currentUVIndex.UV_VALUE <= 7):
-                        color = "#f85900";
-                        $scope.exposureCategory = "High";
-                        $scope.exposureContent = ["Reduce time in the sun between 10 a.m. and 4 p.m.",
-                            "If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.", "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
-                            "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
-                        ];
-                        break;
-                    case (currentUVIndex.UV_VALUE <= 10):
-                        color = "#d8001d";
-                        $scope.exposureCategory = "Very High";
-                        $scope.exposureContent = ["Minimize sun exposure between 10 a.m. and 4 p.m.", "If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.",
-                            "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
-                            "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
-                        ];
-                        break;
-                    case (currentUVIndex.UV_VALUE >= 11):
-                        color = "#998cff";
-                        $scope.exposureCategory = "Extreme";
-                        $scope.exposureContent = ["Minimize sun exposure between 10 a.m. and 4 p.m.", "If outdoors, seek shade and wear protective clothing, a wide-brimmed hat, and UV-blocking sunglasses.",
-                            "Generously apply broad spectrum SPF 30+ sunscreen every 2 hours, even on cloudy days, and after swimming or sweating.",
-                            "Watch out for bright surfaces, like sand, water and snow, which reflect UV and increase exposure."
-                        ];
-                        break;
-                }
-
-                uvdata = {
-                    "label": moment(currentUVIndex.DATE_TIME, 'MMM-DD-YYYY HH a').format('h A'),
-                    "value": currentUVIndex.UV_VALUE,
-                    "color": color
-                };
-
-                $scope.uvDataSet.push(uvdata);
-
-                //Getting the current UV Index for the entered ZIP
-                if (moment(currentUVIndex.DATE_TIME, 'MMM-DD-YYYY HH a').format('h A') === moment().format('h A')) {
-                    $scope.currentUVI = currentUVIndex.UV_VALUE;
-
-                    $scope.uvColor = {
-                        'color': color,
-                        'text-align': 'center'
-
+                    uvdata = {
+                        "label": moment(currentUVIndex.DATE_TIME, 'MMM-DD-YYYY HH a').format('h A'),
+                        "value": currentUVIndex.UV_VALUE,
+                        "color": color
                     };
-                }
 
+                    $scope.uvDataSet.push(uvdata);
+
+                    //Getting the current UV Index for the entered ZIP
+                    if (moment(currentUVIndex.DATE_TIME, 'MMM-DD-YYYY HH a').format('h A') === moment().format('h A')) {
+                        $scope.currentUVI = currentUVIndex.UV_VALUE;
+
+                        $scope.uvColor = {
+                            'color': color,
+                            'text-align': 'center'
+
+                        };
+                    }
+
+                }
             }
             $scope.uvDataReady = true;
             $rootScope.showLoading('#uvloading', false);
-
         },
         function(error) {
             console.error(JSON.stringify(error));
         }
     );
+
+    $q.all([aqiCurrentQuery, uvQuery]).then(function(results) {
+        var foundResults = false;
+        for (var i = 0; i < results.length; i++) {
+            if (results[i].length > 0) {
+                foundResults = true;
+            }
+        }
+        if (!foundResults) {
+            console.log('no results, redirecting to search page');
+            $rootScope.searchError = 'No data for zipcode';
+            $location.path('/');
+        }
+    });
 
     $scope.uviBCOptions = {
         chart: {

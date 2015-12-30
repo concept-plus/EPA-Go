@@ -9,11 +9,18 @@
                 &bull; {{item}}
             </ul>
         </div>
-        <div id="current-aqi" class="col-md-6">
-            <h2> Current Air Quality Index </h2>
-            <canvas id="current-aqi-chart" class="chart chart-polar-area" chart-legend="true" chart-data="currentAQI2" chart-labels="currentAQISeries">
-            </canvas>
+        <div id="current-aqi" class="col-md-6" ng-switch on="foundAqiData">
+            <div ng-switch-when="true">
+                <h2> Current Air Quality Index </h2>
+                <canvas id="current-aqi-chart" class="chart chart-polar-area" chart-options="aqiCurrentOptions" chart-legend="true" chart-data="currentAQI2" chart-labels="currentAQISeries">
+                </canvas>
+            </div>
+            <div ng-switch-default>
+                <h2> Current Air Quality Index </h2>
+                <span>No Data</span>
+            </div>
         </div>
+
     </div>
     <div class="col-md-12 content detail-view" id="forecast-uv">
         <h2>Today's UV Index for {{zip}}</h2>
@@ -25,10 +32,6 @@
     </br>
     </br>
     </br>
-    <div class="col-md-12 content detail-view" id="full-aqi">
-        <canvas id="aqi-chart" class="chart chart-bar" chart-data="aqiFullData" chart-labels="aqiFullLables" chart-series="aqiFullSeries">
-        </canvas>
-        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-colours="colors"></canvas>
-        <nvd3 options="options" data="data"></nvd3>
+    <div class="col-md-12 content detail-view">
     </div>
 </div>

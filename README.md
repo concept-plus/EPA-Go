@@ -6,7 +6,7 @@ EPA-GO is Concept Plus' working prototype submission in response to the EPA Envi
 
 Project Links  | URLs 
  ------------- | ------------- 
- Production Application    | [epago.conceptplusllc.net](https://EPAgo.conceptplusllc.net) 
+ Production Application    | [epago.conceptplusllc.net](http://EPAgo.conceptplusllc.net) 
 
 #### Powered By
 
